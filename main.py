@@ -44,7 +44,7 @@ news_params = {
 
 news_response = requests.get(url="https://newsapi.org/v2/everything", params=news_params)
 news_response.raise_for_status()
-news_data = news_response.json()["articles"][:2]
+news_data = news_response.json()["articles"][:3]
 # latest_news_title = news_data[0]["title"]
 # latest_news_brief = news_data[0]["content"]
 
@@ -65,9 +65,9 @@ else:
     message = client.messages.create(
         body=f"{STOCK} ⬇️ by {round(performance, 4)}%\n\n"
              f"Title: {news_data[0]['title']}\n\n"
-             f"Brief: {news_data[0]['content']}\n\n"
+             f"Brief: {news_data[0]['description']}\n\n"
              f"Title: {news_data[1]['title']}'\n\n"
-             f"Brief: {news_data[1]['content']}",
+             f"Brief: {news_data[1]['description']}",
         from_='+18163071223',
         to='+85269738381',
     )
